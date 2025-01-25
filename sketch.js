@@ -16,7 +16,6 @@ function etchSketch() {
 
   // Function to create the grid boxes
   function makeGrid(size) {
-    if (size <= 100) {
       for (let i = 0; i < size; i++) {
         const column = document.createElement("div");
         column.classList.add("column");
@@ -27,29 +26,37 @@ function etchSketch() {
         }
         sketchScreen.appendChild(column);
       }
-    } else {
-      alert("The size of the grid should be less than or equal to 100");
-      sketchContainer.textContent = "Reload to play again";
     }
-  }
 
   // Function to change the color of the grid boxes
   function changeColor() {
     const rows = document.querySelectorAll(".row");
     rows.forEach((row) => {
       row.addEventListener("mouseover", () => {
-        row.setAttribute("style", "background-color: black");
+        const randomR = Math.floor(Math.random() * 256);
+        const randomG = Math.floor(Math.random() * 256);
+        const randomB = Math.floor(Math.random() * 256);
+        const random =  Math.random();
+        row.setAttribute("style", `background-color: rgba(${randomR},${randomG},${randomB},${random}`);
       });
     });
   }
   
-  // Function to play the game
+  // Function to initiate the game
   function playGame(){
      button.addEventListener("click",()=>{
       const size = parseInt(window.prompt("Enter the size of the grid"));
-      if(size>0 && size<=100){
+      if(!isNaN(size) && (size>0 && size<=100)){
         sketchScreen.textContent = "";
         makeGrid(size);
+      }
+      else if (size<=0 || size>100){
+        alert("The size of the grid should be greater than 0 and less than or equal to 100");
+        sketchScreen.textContent = "Click the button to Refresh";
+      }
+      else{
+        alert("Please enter a valid number");
+        sketchScreen.textContent = "Click the button to Refresh";
       }
       changeColor();
      })
