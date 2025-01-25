@@ -42,10 +42,15 @@ function etchSketch() {
       });
     });
   }
-
+  
+  // Function to play the game
   function playGame(){
      button.addEventListener("click",()=>{
-      makeGrid(window.prompt("Enter the size of the grid"));
+      const size = parseInt(window.prompt("Enter the size of the grid"));
+      if(size>0 && size<=100){
+        sketchScreen.textContent = "";
+        makeGrid(size);
+      }
       changeColor();
      })
   }
