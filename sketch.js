@@ -1,5 +1,5 @@
 function etchSketch() {
-  // Create the container for the sketch
+  
   const container = document.querySelector("#container");
   const sketchContainer = document.createElement("div");
   sketchContainer.classList.add("sketch-container");
@@ -60,10 +60,12 @@ function etchSketch() {
         alert(
           "The size of the grid should be greater than 0 and less than or equal to 100"
         );
-        sketchScreen.textContent = "Click the button to Refresh";
+        sketchScreen.setAttribute("style", "background-color: white");
+        sketchScreen.textContent = "";
       } else {
         alert("Please enter a valid number");
-        sketchScreen.textContent = "Click the button to Refresh";
+        sketchScreen.setAttribute("style", "background-color: white");
+        sketchScreen.textContent = "";
       }
     });
   }
