@@ -11,7 +11,7 @@ function etchSketch() {
   sketchContainer.appendChild(heading);
 
   // Function to create the grid boxes5
-  function makeGrid(size) {16
+  function makeGrid(size) {
     for (let i = 0; i < size; i++) {
       const column = document.createElement("div");
       column.classList.add("column");
@@ -23,6 +23,19 @@ function etchSketch() {
       sketchScreen.appendChild(column);
     }
   }
-  makeGrid(window.prompt("Enter the size of the grid"));
+
+  // Function to change the color of the grid boxes
+  function changeColor() {
+    const rows = document.querySelectorAll(".row");
+    rows.forEach((row) => {
+      row.addEventListener("mouseover", () => {
+        row.setAttribute("style", "background-color: black");
+      });
+    });
+  }
+
+  //   makeGrid(window.prompt("Enter the size of the grid"));
+  makeGrid(16);
+  changeColor();
 }
 etchSketch();
