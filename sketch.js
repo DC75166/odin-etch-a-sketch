@@ -1,4 +1,5 @@
 function etchSketch() {
+  // Create the container for the sketch
   const container = document.querySelector("#container");
   const sketchContainer = document.createElement("div");
   sketchContainer.classList.add("sketch-container");
@@ -9,18 +10,26 @@ function etchSketch() {
   const heading = document.createElement("h1");
   heading.textContent = "Etch-A-Sketch";
   sketchContainer.appendChild(heading);
+  button = document.createElement("button");
+  button.textContent = "Click to play";
+  heading.appendChild(button);
 
-  // Function to create the grid boxes5
+  // Function to create the grid boxes
   function makeGrid(size) {
-    for (let i = 0; i < size; i++) {
-      const column = document.createElement("div");
-      column.classList.add("column");
-      for (let j = 1; j <= size; j++) {
-        const row = document.createElement("div");
-        row.classList.add("row");
-        column.appendChild(row);
+    if (size <= 100) {
+      for (let i = 0; i < size; i++) {
+        const column = document.createElement("div");
+        column.classList.add("column");
+        for (let j = 1; j <= size; j++) {
+          const row = document.createElement("div");
+          row.classList.add("row");
+          column.appendChild(row);
+        }
+        sketchScreen.appendChild(column);
       }
-      sketchScreen.appendChild(column);
+    } else {
+      alert("The size of the grid should be less than or equal to 100");
+      sketchContainer.textContent = "Reload to play again";
     }
   }
 
@@ -34,8 +43,13 @@ function etchSketch() {
     });
   }
 
-  //   makeGrid(window.prompt("Enter the size of the grid"));
-  makeGrid(16);
-  changeColor();
+  function playGame(){
+     button.addEventListener("click",()=>{
+      makeGrid(window.prompt("Enter the size of the grid"));
+      changeColor();
+     })
+  }
+
+  playGame();
 }
 etchSketch();
