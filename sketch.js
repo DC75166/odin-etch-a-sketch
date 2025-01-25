@@ -10,6 +10,7 @@ function etchSketch() {
   heading.textContent = "Etch-A-Sketch";
   sketchContainer.appendChild(heading);
 
+
   // Function to create the grid boxes
   function makeGrid(size) {
     for (let i = 0; i < size; i++) {
@@ -18,14 +19,12 @@ function etchSketch() {
       for (let j = 1; j <= size; j++) {
         const column = document.createElement("div");
         column.classList.add("column");
-        column.textContent = "This is a test";
-        column.style.border = "1px solid red";
-        column.innerText = i * size + j;
+        column.setAttribute("style", "border: 0.5px solid black");
         row.appendChild(column);
       }
       sketchScreen.appendChild(row);
     }
   }
-  makeGrid(16);
+  makeGrid(window.prompt("Enter the size of the grid"));
 }
 etchSketch();
