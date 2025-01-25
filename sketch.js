@@ -1,5 +1,5 @@
 function etchSketch() {
-  
+
   const container = document.querySelector("#container");
   const sketchContainer = document.createElement("div");
   sketchContainer.classList.add("sketch-container");
@@ -8,7 +8,7 @@ function etchSketch() {
   container.appendChild(sketchContainer);
   sketchContainer.appendChild(sketchScreen);
   const heading = document.createElement("h1");
-  heading.textContent = "Etch-A-Sketch";
+  heading.textContent = "Multicolor sketchpad";
   sketchContainer.appendChild(heading);
   const buttonDiv = document.createElement("div");
   buttonDiv.classList.add("button-div");
@@ -48,7 +48,7 @@ function etchSketch() {
   // Function to initiate the game
   function playGame() {
     button = document.createElement("button");
-    button.textContent = "Click to play";
+    button.textContent = "Click to sketch";
     buttonDiv.appendChild(button);
     button.addEventListener("click", () => {
       const size = parseInt(window.prompt("Enter the size of the grid"));
