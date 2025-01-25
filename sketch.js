@@ -5,24 +5,22 @@ function etchSketch() {
   const sketchScreen = document.createElement("div");
   sketchScreen.classList.add("sketch-screen");
   container.appendChild(sketchContainer);
-  container.appendChild(sketchScreen);
+  sketchContainer.appendChild(sketchScreen);
   const heading = document.createElement("h1");
   heading.textContent = "Etch-A-Sketch";
   sketchContainer.appendChild(heading);
 
-
-  // Function to create the grid boxes
-  function makeGrid(size) {
+  // Function to create the grid boxes5
+  function makeGrid(size) {16
     for (let i = 0; i < size; i++) {
-      const row = document.createElement("div");
-      row.classList.add("row");
+      const column = document.createElement("div");
+      column.classList.add("column");
       for (let j = 1; j <= size; j++) {
-        const column = document.createElement("div");
-        column.classList.add("column");
-        column.setAttribute("style", "border: 0.5px solid black");
-        row.appendChild(column);
+        const row = document.createElement("div");
+        row.classList.add("row");
+        column.appendChild(row);
       }
-      sketchScreen.appendChild(row);
+      sketchScreen.appendChild(column);
     }
   }
   makeGrid(window.prompt("Enter the size of the grid"));
